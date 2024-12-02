@@ -23,11 +23,21 @@
                     <div>등록일시 : ${boardVo.createdAt.substring(0, 16)}</div>
                 </div>
                 <div>${boardVo.content}</div>
+                <!-- 첨부 파일 다운로드 링크 추가 -->
+                <c:if test="${not empty boardVo.fileName}">
+                    <div class="mt-3">
+                        <strong>첨부 파일:</strong>
+                        <a href="/board/${boardVo.seq}/download" class="btn btn-sm btn-outline-primary">
+                            ${boardVo.originalFileName}
+                            <i class="bi bi-download"></i>
+                        </a>
+                    </div>
+                </c:if>
             </div>
         </div>
         <div>
             <a href="/board/" class="btn btn-primary">게시글 목록</a>
-            <a href="/board/${boardVo.seq}/update/" class="btn btn-warning">게시글 수정</a>
+            <a href="/board/${boardVo.seq}/update" class="btn btn-warning">게시글 수정</a>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">게시글 삭제</button>
         </div>
     </div>
@@ -36,7 +46,7 @@
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="deleteForm" action="/board/${boardVo.seq}/delete/" method="POST">
+                <form id="deleteForm" action="/board/${boardVo.seq}/delete" method="POST">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="deleteModalModalLabel">게시글 삭제</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

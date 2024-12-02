@@ -11,6 +11,8 @@
         <result property="passwd" column="PASSWD" />
         <result property="createdAt" column="CREATED_AT" />
         <result property="updatedAt" column="UPDATED_AT" />
+        <result property="fileName" column="FILE_NAME" />
+        <result property="originalFileName" column="ORIGINAL_FILE_NAME" />
     </resultMap>
 
     <!-- 게시글 등록 -->
@@ -40,7 +42,6 @@
         SELECT
             SEQ,
             TITLE,
-            CONTENT,
             USERNAME,
             CREATED_AT,
             UPDATED_AT
@@ -92,7 +93,9 @@
             USERNAME,
             PASSWD,
             CREATED_AT,
-            UPDATED_AT
+            UPDATED_AT,
+            FILE_NAME,
+            ORIGINAL_FILE_NAME
         FROM
             BOARD
         WHERE
@@ -109,7 +112,9 @@
             TITLE = #{title},
             CONTENT = #{content},
             USERNAME = #{username},
-            PASSWD = #{passwd}
+            PASSWD = #{passwd},
+            FILE_NAME = #{fileName},
+            ORIGINAL_FILE_NAME = #{originalFileName}
         WHERE
             SEQ = #{seq}
         ]]>
