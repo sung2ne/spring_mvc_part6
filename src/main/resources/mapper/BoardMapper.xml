@@ -20,12 +20,16 @@
             TITLE, 
             CONTENT, 
             USERNAME, 
-            PASSWD
+            PASSWD,
+            FILE_NAME,
+            ORIGINAL_FILE_NAME
         ) VALUES (
             #{title}, 
             #{content}, 
             #{username}, 
-            #{passwd}
+            #{passwd},
+            #{fileName},
+            #{originalFileName}
         )
         ]]>
     </insert>

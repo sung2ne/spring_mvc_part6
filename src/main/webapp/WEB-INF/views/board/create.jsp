@@ -17,7 +17,7 @@
         <h1 class="text-center my-4">게시글 등록</h1>
         <div class="card">
             <div class="card-body">
-                <form id="createForm" action="/board/create/" method="POST">
+                <form id="createForm" action="/board/create" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="title" class="form-label">제목</label>
                         <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요" required>
@@ -33,6 +33,11 @@
                     <div class="mb-3">
                         <label for="passwd" class="form-label">비밀번호</label>
                         <input type="password" class="form-control" id="passwd" name="passwd" placeholder="비밀번호를 입력하세요" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="uploadFile" class="form-label">첨부 파일</label>
+                        <input type="file" class="form-control" id="uploadFile" name="uploadFile" accept="*/*">
+                        <small class="form-text text-muted">파일 크기는 10MB 이하만 가능합니다.</small>
                     </div>
                     <button type="submit" class="btn btn-primary">등록하기</button>
                     <a href="/board/list/" class="btn btn-secondary">취소</a>
