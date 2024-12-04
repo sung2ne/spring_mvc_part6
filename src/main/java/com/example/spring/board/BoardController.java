@@ -1,6 +1,8 @@
 package com.example.spring.board;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,9 +21,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -29,7 +28,7 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
-    private String uploadPath = "C:/uploads/board";
+    private final String uploadPath = "C:/uploads/board";
 
     // 게시글 등록
     @GetMapping("/create")
@@ -74,12 +73,12 @@ public class BoardController {
                 mav.setViewName("redirect:/board/");
             } else {
                 redirectAttributes.addFlashAttribute("errorMessage", "게시글이 등록되지 않았습니다.");
-                mav.setViewName("redirect:/board/create/");
+                mav.setViewName("redirect:/board/create");
             }
         } catch (Exception e) {
             e.printStackTrace();
             redirectAttributes.addFlashAttribute("errorMessage", "파일 업로드 중 오류가 발생했습니다.");
-            mav.setViewName("redirect:/board/create/");
+            mav.setViewName("redirect:/board/create");
         }
         
         return mav;
